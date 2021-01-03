@@ -67,9 +67,15 @@ namespace NarackaNaPica
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
+            this.desertList = new System.Windows.Forms.ListBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cenaNaDesert = new System.Windows.Forms.TextBox();
+            this.orderButton = new System.Windows.Forms.Button();
+            this.canselButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -186,6 +192,11 @@ namespace NarackaNaPica
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.canselButton);
+            this.groupBox4.Controls.Add(this.orderButton);
+            this.groupBox4.Controls.Add(this.cenaNaDesert);
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.desertList);
             this.groupBox4.Location = new System.Drawing.Point(12, 256);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(375, 182);
@@ -440,6 +451,50 @@ namespace NarackaNaPica
             this.textBox9.Size = new System.Drawing.Size(100, 20);
             this.textBox9.TabIndex = 14;
             // 
+            // desertList
+            // 
+            this.desertList.FormattingEnabled = true;
+            this.desertList.Location = new System.Drawing.Point(14, 20);
+            this.desertList.Name = "desertList";
+            this.desertList.Size = new System.Drawing.Size(120, 95);
+            this.desertList.TabIndex = 0;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(194, 20);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(82, 13);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Cena na desert:";
+            // 
+            // cenaNaDesert
+            // 
+            this.cenaNaDesert.Location = new System.Drawing.Point(197, 37);
+            this.cenaNaDesert.Name = "cenaNaDesert";
+            this.cenaNaDesert.Size = new System.Drawing.Size(143, 20);
+            this.cenaNaDesert.TabIndex = 2;
+            // 
+            // orderButton
+            // 
+            this.orderButton.Location = new System.Drawing.Point(197, 73);
+            this.orderButton.Name = "orderButton";
+            this.orderButton.Size = new System.Drawing.Size(143, 23);
+            this.orderButton.TabIndex = 3;
+            this.orderButton.Text = "Naracaj";
+            this.orderButton.UseVisualStyleBackColor = true;
+            this.orderButton.Click += new System.EventHandler(this.OrderButtonEvent);
+            // 
+            // canselButton
+            // 
+            this.canselButton.Location = new System.Drawing.Point(197, 102);
+            this.canselButton.Name = "canselButton";
+            this.canselButton.Size = new System.Drawing.Size(143, 23);
+            this.canselButton.TabIndex = 4;
+            this.canselButton.Text = "Otkazi";
+            this.canselButton.UseVisualStyleBackColor = true;
+            this.canselButton.Click += new System.EventHandler(this.CancelButtonEvent);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -458,6 +513,8 @@ namespace NarackaNaPica
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
@@ -504,6 +561,11 @@ namespace NarackaNaPica
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button canselButton;
+        private System.Windows.Forms.Button orderButton;
+        private System.Windows.Forms.TextBox cenaNaDesert;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ListBox desertList;
     }
 }
 

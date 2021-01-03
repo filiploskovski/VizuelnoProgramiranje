@@ -16,6 +16,7 @@ namespace NarackaNaPica
         public Form1()
         {
             InitializeComponent();
+            FillLists();
 
             this.sSize.CheckedChanged += new EventHandler(GenericEventHandler);
             this.mSize.CheckedChanged += new EventHandler(GenericEventHandler);
@@ -32,6 +33,8 @@ namespace NarackaNaPica
             this.cenaGaziranSok.TextChanged += new EventHandler(GenericEventHandler);
             this.cenaGustiSok.TextChanged += new EventHandler(GenericEventHandler);
             this.cenaPivo.TextChanged += new EventHandler(GenericEventHandler);
+
+            this.desertList.SelectedIndexChanged += new EventHandler(GenericEventHandler);
         }
 
         private void GenericEventHandler(object sender, EventArgs e)
@@ -39,13 +42,41 @@ namespace NarackaNaPica
             CalculatePrice();
         }
 
+        private void OrderButtonEvent(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("", "Vasata Naracka", MessageBoxButtons.OK);
+            if (res == DialogResult.OK)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void CancelButtonEvent(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
         private void CalculatePrice()
         {
             var pricePerSize = GetValueFromSizeRadio();
             var pricePerFillings = GetValueFromFillings();
             var pricePerQuantity = GetValueFromQuantaty();
+            var pricePerDesert = GetValueFromDesert();
 
-            VkupnoNaplata(new int[] { pricePerSize, pricePerFillings, pricePerQuantity });
+            VkupnoNaplata(new int[] { pricePerSize, pricePerFillings, pricePerQuantity, pricePerDesert });
+        }
+
+        private int GetValueFromDesert()
+        {
+            var price = 0;
+            if (desertList.SelectedItem == null) return 0;
+            if (desertList.SelectedItem.ToString() == "Ovosna Pita") price += 70;
+            if(desertList.SelectedItem.ToString() == "Sladoled") price += 80;
+            if (desertList.SelectedItem.ToString() == "Torta") price += 90;
+
+            this.cenaNaDesert.Text = price.ToString();
+
+            return price;
         }
 
         private int GetValueFromQuantaty()
@@ -71,11 +102,6 @@ namespace NarackaNaPica
             return totalPrice;
         }
 
-        private void VkupnoNaplata(int[] args)
-        {
-            vkupnoZaNaplata.Text = args.Sum().ToString();
-        }
-
         private int GetValueFromSizeRadio()
         {
             var price = 0;
@@ -83,6 +109,18 @@ namespace NarackaNaPica
             if (mSize.Checked) price = Helper.GetNumberFromText(mPrize.Text);
             if (lSize.Checked) price = Helper.GetNumberFromText(lPrize.Text);
             return price;
+        }
+
+        private void VkupnoNaplata(int[] args)
+        {
+            vkupnoZaNaplata.Text = args.Sum().ToString();
+        }
+
+        private void FillLists()
+        {
+            this.desertList.Items.Add("Ovosna Pita");
+            this.desertList.Items.Add("Sladoled");
+            this.desertList.Items.Add("Torta");
         }
     }
 }
